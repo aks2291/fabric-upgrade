@@ -1,0 +1,102 @@
+{
+    "ORG1Policies": {
+        "Endorsement": {
+             "mod_policy": "Admins",
+             "policy": {
+                 "type": 1,
+                 "value": {
+                 "identities": [
+                    {
+                       "principal": {
+                           "msp_identifier": "ORG1MSP",
+                           "role": "MEMBER"
+                       },
+                       "principal_classification": "ROLE"
+                    }
+                  ],
+                  "rule": {
+                    "n_out_of": {
+                         "n": 1,
+                         "rules": [
+                          {
+                              "signed_by": 0
+                          }
+                         ]
+                     }
+                  },
+                  "version": 0
+                }
+             },
+             "version": "0"
+        }
+     },
+     "ORG2Policies": {
+        "Endorsement": {
+             "mod_policy": "Admins",
+             "policy": {
+                 "type": 1,
+                 "value": {
+                 "identities": [
+                    {
+                       "principal": {
+                           "msp_identifier": "ORG2MSP",
+                           "role": "MEMBER"
+                       },
+                       "principal_classification": "ROLE"
+                    }
+                  ],
+                  "rule": {
+                    "n_out_of": {
+                         "n": 1,
+                         "rules": [
+                          {
+                              "signed_by": 0
+                          }
+                         ]
+                     }
+                  },
+                  "version": 0
+                }
+             },
+             "version": "0"
+        }
+     },
+     "appPolicies": {
+          "Endorsement": {
+              "mod_policy": "Admins",
+              "policy": {
+                  "type": 3,
+                  "value": {
+                      "rule": "MAJORITY",
+                      "sub_policy": "Endorsement"
+                  }
+              },
+              "version": "0"
+          },
+          "LifecycleEndorsement": {
+            "mod_policy": "Admins",
+            "policy": {
+                "type": 3,
+                "value": {
+                    "rule": "MAJORITY",
+                    "sub_policy": "Endorsement"
+                }
+            },
+            "version": "0"
+        }
+     },
+     "acls": {
+          "_lifecycle/CheckCommitReadiness": {
+              "policy_ref": "/Channel/Application/Writers"
+          },
+          "_lifecycle/CommitChaincodeDefinition": {
+              "policy_ref": "/Channel/Application/Writers"
+          },
+          "_lifecycle/QueryChaincodeDefinition": {
+              "policy_ref": "/Channel/Application/Readers"
+          },
+          "_lifecycle/QueryChaincodeDefinitions": {
+              "policy_ref": "/Channel/Application/Readers"
+          }
+     }
+  }

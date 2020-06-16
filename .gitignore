@@ -1,0 +1,4 @@
+backup/*
+!backup/readme
+upgrade/*
+!upgrade/readme
